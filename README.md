@@ -1,3 +1,33 @@
+# FREA Windows
+
+This fork allows FREA to run on Windows by downgrading the Python version from 3.8 to 3.7 and downgrading the dependencies accordingly.
+
+## Setup
+
+1. Install [CARLA 0.9.15](https://carla.readthedocs.io/en/latest/start_quickstart/).
+
+2. Add `CARLA_ROOT` and `PYTHONPATH` to your user environment variables:
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable("CARLA_ROOT", "<insert-carla-installation-directory-here>", "User")
+    [Environment]::SetEnvironmentVariable("PYTHONPATH", "%CARLA_ROOT%\PythonAPI\carla\dist\carla-0.9.15-py3.7-win-amd64.egg;%CARLA_ROOT%\PythonAPI\carla\agents;%CARLA_ROOT%\PythonAPI\carla;%CARLA_ROOT%\PythonAPI", "User")
+    ```
+
+3. Ensure [Rye](https://rye-up.com/guide/installation/) is installed on your machine and run:
+
+    ```powershell
+    rye sync
+    ```
+
+    Alternatively, you can manually install [Python 3.7.9](https://python.org/downloads/release/python-379/), create a virtual environment,
+    and install the dependencies from `requirements-dev.lock` using `pip`:
+    
+    ```powershell
+    pip install -r requirements-dev.lock
+    ```
+
+---
+
 # FREA: Feasibility-Guided Generation of Safety-Critical Scenarios with Reasonable Adversariality
 
 <div align="center">
